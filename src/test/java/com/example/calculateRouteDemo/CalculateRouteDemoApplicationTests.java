@@ -1,10 +1,10 @@
-package com.example.CalulateRouteDemo;
+package com.example.calculateRouteDemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CalulateRouteDemoApplicationTests {
+class CalculateRouteDemoApplicationTests {
 
 	@Test
 	void contextLoads() {

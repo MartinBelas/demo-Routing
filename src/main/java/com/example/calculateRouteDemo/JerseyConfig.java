@@ -1,10 +1,11 @@
-package com.example.CalulateRouteDemo;
+package com.example.calculateRouteDemo;
 
 
-import com.example.CalulateRouteDemo.rest.resources.RootResource;
-import com.example.CalulateRouteDemo.rest.resources.RoutingResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
+
+import com.example.calculateRouteDemo.rest.resources.RootResource;
+import com.example.calculateRouteDemo.rest.resources.RoutingResource;
 
 @Component
 public class JerseyConfig extends ResourceConfig {

@@ -1,4 +1,4 @@
-package com.example.CalulateRouteDemo.rest.resources;
+package com.example.calculateRouteDemo.rest.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -7,7 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.example.CalulateRouteDemo.services.RoutingService;
+import com.example.calculateRouteDemo.services.RoutingService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -28,7 +29,7 @@ public class RoutingResource {
             @PathParam("from") String from,
             @PathParam("to") String to
             ) {
-
+        
         log.info(" Find route from {} to {} ...", from, to);
 
         String[] routes = service.getRoute(from, to);

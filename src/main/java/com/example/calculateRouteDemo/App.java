@@ -1,15 +1,16 @@
-package com.example.CalulateRouteDemo;
+package com.example.calculateRouteDemo;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class CalulateRouteDemoApplication extends SpringBootServletInitializer {
+public class App extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        new CalulateRouteDemoApplication()
-                .configure(new SpringApplicationBuilder(CalulateRouteDemoApplication.class))
+        
+        new App()
+                .configure(new SpringApplicationBuilder(App.class))
                 .run(args);
     }
 }
