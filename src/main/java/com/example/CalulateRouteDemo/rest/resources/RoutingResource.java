@@ -7,13 +7,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.CalulateRouteDemo.services.RoutingService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Path("/routing")
 public class RoutingResource {
 
     private static final Logger log = LogManager.getLogger(RoutingResource.class);
+
+    @Autowired
+    RoutingService service;
 
     @Path("/{from}/{to}")
     @GET
@@ -25,7 +31,12 @@ public class RoutingResource {
 
         log.info(" Find route from {} to {} ...", from, to);
 
-        //TODO
-        return null;
+        String[] routes = service.getRoute(from, to);
+        
+        JSONObject result = new JSONObject();
+        result.put("route", routes);
+        
+        log.info(" Route from {} to {} : {}", from, to, result);
+        return Response.status(Response.Status.OK).entity(result.toString()).build();
     }
 }
