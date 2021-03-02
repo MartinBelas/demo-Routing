@@ -13,11 +13,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 
 @Path("/routing")
+@Controller
 public class RoutingResource {
 
     private static final Logger log = LogManager.getLogger(RoutingResource.class);
+    
+    @Value("${app.user}")
+    private String user;
 
     @Autowired
     RoutingService service;
@@ -32,7 +38,7 @@ public class RoutingResource {
         
         log.info(" Find route from {} to {} ...", from, to);
 
-        String[] routes = service.getRoute(from, to);
+        String[] routes = service.getRouteWithLeastBorders(from, to);
         
         JSONObject result = new JSONObject();
         result.put("route", routes);
