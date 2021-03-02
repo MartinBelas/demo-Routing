@@ -1,9 +1,6 @@
 package com.example.calculateRouteDemo.services;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.example.calculateRouteDemo.dao.CountryDao;
@@ -17,8 +14,6 @@ import java.util.Map;
 
 @Service
 public class RoutingService {
-    
-    private static final Logger log = LogManager.getLogger(RoutingService.class);
     
     private static int MAX_BORDERS_COUNT;
     

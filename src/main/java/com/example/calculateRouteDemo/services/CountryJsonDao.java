@@ -42,11 +42,7 @@ public class CountryJsonDao implements CountryDao {
     public Map<String, Country> getAll() {
         
         Map<String, Country> copy = new HashMap<>();
-
-        countries.forEach( (id, country) -> {
-            copy.put(id, country);
-        });
-
+        countries.forEach( (id, country) -> copy.put(id, country));
         return copy;
     }
     
