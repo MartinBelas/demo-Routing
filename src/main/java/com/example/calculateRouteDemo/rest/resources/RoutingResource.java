@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.calculateRouteDemo.services.NoWayException;
 import com.example.calculateRouteDemo.services.RoutingService;
 
 import org.apache.logging.log4j.LogManager;
@@ -38,12 +39,18 @@ public class RoutingResource {
         
         log.info(" Find route from {} to {} ...", from, to);
 
-        String[] routes = service.getRouteWithLeastBorders(from, to);
+        String[] routes;
+        try {
+            routes = service.getRouteWithLeastBorders(from, to);
+            JSONObject result = new JSONObject();
+            result.put("route", routes);
+            
+            log.info(" Route from {} to {} : {}", from, to, result);
+            return Response.status(Response.Status.OK).entity(result.toString()).build();
+        } catch (NoWayException e) {
+            log.error(e.getMessage());
+            return Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build();
+        }
         
-        JSONObject result = new JSONObject();
-        result.put("route", routes);
-        
-        log.info(" Route from {} to {} : {}", from, to, result);
-        return Response.status(Response.Status.OK).entity(result.toString()).build();
     }
 }
